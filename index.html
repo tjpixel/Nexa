@@ -2782,7 +2782,7 @@ function isSched(h,dt){if(h.freq==='daily')return true;return(h.days||[]).includ
 function getC(hid,dt){return st.checks[ck(hid,dt)]===true;}
 function getCmd(hid,m,d){return st.checks[ckmd(hid,m,d)]===true;}
 function togC(hid,dt){const k=ck(hid,dt);st.checks[k]=!st.checks[k];saveS();}
-function isToday(dt){const n=new Date();return dt.getDate()===n.getDate()&&dt.getMonth()===n.getMonth()&&dt.getFullYear()===n.getFullYear();}
+function isToday(dt){return dt.getDate()===NOW.getDate()&&dt.getMonth()===NOW.getMonth()&&dt.getFullYear()===NOW.getFullYear();}
 function isFuture(dt){return dt>NOW&&!isToday(dt);}
 function bc(p){if(p>=80)return'var(--accent)';if(p>=50)return'var(--accent2)';if(p>=20)return'var(--accent3)';return'var(--miss)';}
 function fl(h){if(h.freq==='daily')return'diario';const n=(h.days||[]).length;if(n===7)return'diario';if(n===5)return'laboral';return`${n}×sem`;}

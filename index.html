@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>NEXA · Hábitos</title>
 <meta name="description" content="Tracker de hábitos diarios NEXA">
-<meta name="theme-color" content="#4A9CB1">
+<meta name="theme-color" content="#0c0c0e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="NEXA">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -16,8 +16,27 @@
 <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-<link rel="apple-touch-startup-image" href="splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)">
-<link rel="apple-touch-startup-image" href="splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+<!-- Apple splash screens (portrait + landscape para cada iPhone) -->
+<link rel="apple-touch-startup-image" href="splash-1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-2796x1290.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-1179x2556.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-2556x1179.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-1284x2778.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-2778x1284.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-2532x1170.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-2436x1125.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-1242x2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-2688x1242.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-1792x828.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-2208x1242.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-1334x750.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+<link rel="apple-touch-startup-image" href="splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-1136x640.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -277,7 +296,8 @@ body.light .tlfs-overlay{background:var(--bg);}
 .fsfs-host > #hmcontent .hm-cell{height:auto;min-height:0;}
 .fsfs-host > #hmcontent .hm-scroll{padding-right:0;padding-left:10px;}
 
-/* En portrait: rotar 90° para mostrar la vista en horizontal */
+/* En portrait: rotar el host 90° en sentido horario para mostrar la tabla en horizontal.
+   Esto es independiente de la rotación física del dispositivo. */
 @media (orientation:portrait){
   .fsfs-overlay.open .fsfs-host{
     width:100vh;
@@ -287,19 +307,31 @@ body.light .tlfs-overlay{background:var(--bg);}
     left:100vw;
     transform-origin:top left;
     transform:rotate(90deg);
-    /* Padding mapeado a coords de pantalla tras la rotación:
+    /* Padding en coords del elemento → tras rotate(90deg):
        top→screen-right, right→screen-bottom, bottom→screen-left, left→screen-top */
     padding:14px 14px 14px max(env(safe-area-inset-top,0px),14px);
   }
-  /* Toast rotado y centrado para que sea legible en la vista landscape */
+  /* Toast rotado en el mismo sentido que el host y anclado a lo que el usuario
+     percibe como "esquina inferior izquierda" de la vista rotada.
+     Como en pantalla el host ocupa (0,0)→(100vw,100vh) tras la rotación,
+     la esquina inferior-izquierda de la vista landscape coincide con la
+     esquina inferior-izquierda del viewport físico. */
   body.fsfs-open .toast{
-    bottom:auto;right:auto;
-    top:50%;left:50%;
-    transform-origin:center center;
-    transform:translate(-50%,calc(-50% + 14px)) rotate(-90deg) scale(.97);
+    position:fixed;
+    left:22px;
+    bottom:22px;
+    right:auto;
+    top:auto;
+    transform-origin:left bottom;
+    /* rotate(90deg) = misma dirección que el host (horario).
+       Tras rotar sobre left-bottom, el texto baja fuera del viewport,
+       así que lo compensamos subiéndolo con translateY(-100%). */
+    transform:translateY(-100%) rotate(90deg) translateX(14px) scale(.97);
+    opacity:0;
   }
   body.fsfs-open .toast.show{
-    transform:translate(-50%,-50%) rotate(-90deg) scale(1);
+    transform:translateY(-100%) rotate(90deg) translateX(0) scale(1);
+    opacity:1;
   }
 }
 body.light .fsfs-overlay{background:var(--bg);}

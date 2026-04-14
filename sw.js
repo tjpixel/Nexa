@@ -3,7 +3,7 @@
 //  - App shell (HTML/icons/manifest) en caché, network-first con fallback.
 //  - Recursos remotos (Google Fonts) cache-first.
 
-const VERSION = 'nexa-v3';
+const VERSION = 'nexa-v4';
 const SHELL = [
   './',
   './index.html',

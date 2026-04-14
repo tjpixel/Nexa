@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>NEXA · Hábitos</title>
 <meta name="description" content="Tracker de hábitos diarios NEXA">
 <meta name="theme-color" content="#4A9CB1">
@@ -160,7 +160,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 /* MAIN */
 .main{flex:1;overflow-y:auto;display:flex;flex-direction:column;}
-.topbar{padding:20px 30px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--surface);position:sticky;top:0;z-index:20;gap:16px;}
+.topbar{padding:calc(env(safe-area-inset-top,0px) + 20px) calc(env(safe-area-inset-right,0px) + 30px) 18px calc(env(safe-area-inset-left,0px) + 30px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--surface);position:sticky;top:0;z-index:20;gap:16px;}
 .topbar-left h2{font-family:'Syne',sans-serif;font-size:19px;font-weight:700;letter-spacing:-0.3px;}
 .topbar-left p{font-size:13px;color:var(--text-dim);font-weight:500;letter-spacing:.1px;}
 .topbar-right{display:flex;gap:8px;align-items:center;}
@@ -267,7 +267,7 @@ body.light .tlfs-overlay{background:var(--bg);}
 .fsfs-close:hover{background:var(--card2);}
 .fsfs-title-tag{position:fixed;top:max(env(safe-area-inset-top,12px),14px);left:14px;z-index:320;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-dim);background:var(--card);padding:10px 14px;border-radius:10px;border:1px solid var(--border-light);box-shadow:0 4px 14px rgba(0,0,0,.4);}
 .fsfs-stage{position:absolute;inset:0;display:flex;align-items:stretch;justify-content:stretch;}
-.fsfs-host{position:absolute;inset:0;padding:64px 18px 18px;box-sizing:border-box;overflow:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;}
+.fsfs-host{position:absolute;inset:0;padding:18px;box-sizing:border-box;overflow:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;}
 .fsfs-host > #tgrid,
 .fsfs-host > #hmcontent{flex:1;min-height:0;width:100%;}
 .fsfs-host > #hmcontent{display:flex;flex-direction:column;}
@@ -287,7 +287,19 @@ body.light .tlfs-overlay{background:var(--bg);}
     left:100vw;
     transform-origin:top left;
     transform:rotate(90deg);
-    padding:64px 24px 24px;
+    /* Padding mapeado a coords de pantalla tras la rotación:
+       top→screen-right, right→screen-bottom, bottom→screen-left, left→screen-top */
+    padding:14px 14px 14px max(env(safe-area-inset-top,0px),14px);
+  }
+  /* Toast rotado y centrado para que sea legible en la vista landscape */
+  body.fsfs-open .toast{
+    bottom:auto;right:auto;
+    top:50%;left:50%;
+    transform-origin:center center;
+    transform:translate(-50%,calc(-50% + 14px)) rotate(-90deg) scale(.97);
+  }
+  body.fsfs-open .toast.show{
+    transform:translate(-50%,-50%) rotate(-90deg) scale(1);
   }
 }
 body.light .fsfs-overlay{background:var(--bg);}
@@ -582,7 +594,7 @@ body.light #roadmap-view .rm-japan-box{background:linear-gradient(135deg,rgba(19
   .main.heatmap-mode #heatmap-view{
     display:flex;
     flex-direction:column;
-    height:calc(100dvh - 78px);
+    height:calc(100dvh - 78px - env(safe-area-inset-top,0px));
     gap:18px;
   }
   .main.heatmap-mode #heatmap-view .roadmap-card{
@@ -991,7 +1003,7 @@ body.light .inapp-notif{background:rgba(255,255,255,.78);border-color:rgba(180,1
     position:fixed;
     bottom:0; left:0; right:0;
     height:64px;
-    padding:6px 8px calc(env(safe-area-inset-bottom,0px) + 6px);
+    padding:6px calc(env(safe-area-inset-right,0px) + 8px) calc(env(safe-area-inset-bottom,0px) + 6px) calc(env(safe-area-inset-left,0px) + 8px);
     background:rgba(16,16,20,.92);
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
@@ -1160,7 +1172,7 @@ body.light .inapp-notif{background:rgba(255,255,255,.78);border-color:rgba(180,1
   .main.tracker-mode #tracker-view{
     display:flex!important;
     flex-direction:column;
-    height:calc(100dvh - 64px - 28px - 64px - env(safe-area-inset-bottom,0px));
+    height:calc(100dvh - 64px - 28px - 64px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
     gap:20px;
   }
   .main.tracker-mode .month-nav{
@@ -1189,7 +1201,7 @@ body.light .inapp-notif{background:rgba(255,255,255,.78);border-color:rgba(180,1
   }
 
   /* ═══ HEATMAP: ajustes específicos móvil (la base ya está fuera del media query) ═══ */
-  .main.heatmap-mode #heatmap-view{height:calc(100dvh - 64px - 28px - 64px - env(safe-area-inset-bottom,0px));}
+  .main.heatmap-mode #heatmap-view{height:calc(100dvh - 64px - 28px - 64px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
   .main.heatmap-mode #heatmap-view .sec-title{font-size:12px;}
   .main.heatmap-mode .hm-fixed .hm-corner,
   .main.heatmap-mode .hm-grid > .hm-hhead{min-height:24px;max-height:30px;}
@@ -1199,7 +1211,7 @@ body.light .inapp-notif{background:rgba(255,255,255,.78);border-color:rgba(180,1
   .main.annual-mode #annual-view{
     display:flex;
     flex-direction:column;
-    height:calc(100dvh - 64px - 28px - 64px - env(safe-area-inset-bottom,0px));
+    height:calc(100dvh - 64px - 28px - 64px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
     gap:10px;
   }
   /* Cada carrusel ocupa ~mitad del espacio disponible */
@@ -1290,7 +1302,7 @@ body.light .inapp-notif{background:rgba(255,255,255,.78);border-color:rgba(180,1
   .main.day-mode{overflow:hidden;height:100vh;height:100dvh;}
   /* La altura de cada slide del carousel:
      100dvh - topbar(64) - day-nav(60) - paddings(28) - FAB(46) - bnav(64) */
-  #day-panels{height:calc(100dvh - 64px - 60px - 28px - 46px - 64px - env(safe-area-inset-bottom,0px));}
+  #day-panels{height:calc(100dvh - 64px - 60px - 28px - 46px - 64px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
   #day-panels > .day-slide{
     height:100%;
     overflow:hidden;
@@ -3189,6 +3201,7 @@ function openFsFull(targetId, title){
   host.appendChild(el);
 
   ov.classList.add('open');
+  document.body.classList.add('fsfs-open');
   document.body.style.overflow = 'hidden';
 
   // Re-render para que se ajuste a las nuevas dimensiones (landscape)
@@ -3210,6 +3223,7 @@ function closeFsFull(){
   }
 
   ov.classList.remove('open');
+  document.body.classList.remove('fsfs-open');
   document.body.style.overflow = '';
 
   const tid = fsState.targetId;
@@ -4850,6 +4864,20 @@ if('serviceWorker' in navigator){
       .catch(e => console.log('SW error', e));
   });
 }
+
+// Bloquear zoom con dos dedos y doble-tap en iOS Safari (donde user-scalable=no se ignora en navegador)
+document.addEventListener('gesturestart', e => e.preventDefault());
+document.addEventListener('gesturechange', e => e.preventDefault());
+document.addEventListener('gestureend', e => e.preventDefault());
+let _lastTouchEnd = 0;
+document.addEventListener('touchend', e => {
+  const now = Date.now();
+  if (now - _lastTouchEnd <= 350) e.preventDefault();
+  _lastTouchEnd = now;
+}, {passive:false});
+document.addEventListener('touchmove', e => {
+  if (e.touches.length > 1) e.preventDefault();
+}, {passive:false});
 </script>
 </body>
 </html>
